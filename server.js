@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const expresslayout = require("express-ejs-layouts");
+const expressLayout = require("express-ejs-layouts");
 
 // Define Port
 const { PORT = 8080 } = process.env;
@@ -8,7 +8,11 @@ const { PORT = 8080 } = process.env;
 // View Engine
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-app.use(expresslayout);
+app.use(expressLayout);
+app.set("layout", "layouts/default");
+
+const router = require("./router");
+app.use(router);
 
 // Parser
 app.use(express.urlencoded({ extended: false }));
@@ -18,10 +22,6 @@ const setDefault = (req, res, next) => {
   res.locals.contentName = "Default";
   next();
 };
-
-app.get("/", (req, res) => {
-  res.render("/layout/default");
-});
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);
