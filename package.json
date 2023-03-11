@@ -15,7 +15,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon index.js"
   },
   "repository": "git@github.com:SamX23/nodejs-monolith-dashboard.git",
   "author": "SamX23 <skalexsong@gmail.com>",
